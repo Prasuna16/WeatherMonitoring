@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather Report</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		body {
+			background-image: url("../static/images/bg2.png");
+			background-size: cover;
+		}
+	</style>
+</head>
+<body>
+<center>
+	<br>
+	<h2>Weather Report</h2><br><br>
+	<form method="post">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1" style="padding-right: 27%"><b>City</b></label>
+		    <input name="cityName" style="width: 30%" type="text" class="form-control" placeholder="Enter city" required>
+		    <small style="padding-right: 17.5%;" class="form-text">Please enter a valid city name.</small>
+		  </div><br>
+		  <button type="submit" class="btn btn-secondary">Submit</button>
+	</form><br><br>
+	{%if data != "invalid" and data != ""%}
+		<table class="table" style="width: 40%;">
+		  <tbody>
+		    <tr>
+		      <th scope="row">City Name</th>
+		      <td>{{data['city']}}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Country Code</th>
+		      <td>{{data['country_code']}}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Coordinates</th>
+		      <td>{{data['coordinate']}}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Temperature</th>
+		      <td>{{data['temp']}}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Pressure</th>
+		      <td>{{data['pressure']}}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Humidity</th>
+		      <td>{{data['humidity']}}</td>
+		    </tr>
+		  </tbody>
+		</table>
+	{%endif%}
+	{%if data == 'invalid'%}
+		<p style="color: red">Please enter a valid city.</p>
+	{%endif%}
+</center>
+</body>
+</html>
